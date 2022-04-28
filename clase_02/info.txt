@@ -1,0 +1,16 @@
+WEBPACK : Bundler
+config : webpack.config.js
+  "algo": "webpack --config otroarchivo.js"
+  
+Paquetes : webpack webpack-cli (Este es necesario si se corre webpack en la linea de comando)
+Archivo inicial : index.js
+Directorio inicial : src
+
+
+
+
+npm i|install [flag] <paquete>
+
+-S : Default - Paquete de produccion
+-D : Paquete de Desarrollo 
+-g : Paquete global
