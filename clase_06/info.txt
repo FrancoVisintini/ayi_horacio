@@ -1,0 +1,101 @@
+NoSQL : Not Only SQL
+TIPOS DE DATOS : https://www.mongodb.com/docs/manual/reference/bson-types/
+
+
+db : muestra la base de datos donde estoy parado actualmente
+
+show dbs : muestra un listado de todas las bases de datos
+
+use <db> : Nos pasa el puntero cliente a una base de datos
+
+show collections : Muestra las colecciones de una base de datos
+
+
+COLLECTIONS : Son "analogas" a las tablas en el sentido que almacenan la información
+
+db.<nombre_de_collection>.insert({nombre:"horacio"}) :Inserta un nuevo documento en una colecciones
+db.<nombre_de_collection>.insertOne()
+db.<nombre_de_collection>.insertMany()
+INSERT INTO <nombre_de_collection> (nombre) VALUES ("horacio")
+
+
+
+
+
+db.<nombre_de_collection>.find() : Muestra todos los documentos de una coleccion
+
+SELECT * FROM <nombre_de_collection>
+
+db.<nombre_de_collection>.findOne()
+db.<nombre_de_collection>.findMany()
+
+
+https://www.mongodb.com/docs/manual/reference/operator/
+
+db.<nombre_de_collection>.find(query) : 
+
+
+$gt : mayor que (greate than >)
+$and : 
+
+db.usuario.find({nombre:"Horacio"}) : Muestra todos los documentos de la coleccion usuario donde el nombre sea Horacio
+
+SELECT * FROM <nombre_de_collection> WHERE nombre="Horacio"
+
+
+
+
+db.<nombre_de_collection>.update(query,update,optiones) : Actualiza un documento de una coleccion y por default busca el primero que coincida con el query y lo reemplaza por completa
+
+db.usuario.update({},update,optiones)
+db.<nombre_de_collection>.updateOne()
+db.<nombre_de_collection>.updateMany()
+
+db.usuario.update({},{ $set : {edad:31} },{multi:true})
+
+db.usuario.update({ nombre : "Horacio"},{ $set : {edad:31} },{multi:true},{upsert:true}) : UPSERT : crea el documento si no coincide con el query (En este caso nombre : "Horacio")
+
+
+
+UPDATE <nombre_de_collection> SET edad=31 
+
+
+
+db.usuario.find({ edad : { $gt : 30 } })
+
+SELECT * FROM <nombre_de_collection> WHERE edad>30
+
+
+
+db.<nombre_de_collection>.deleteOne(query)
+db.<nombre_de_collection>.deleteMany(query)
+
+
+db.usuario.drop() : Elimina una coleccion
+
+
+
+
+BSON : Binary JSON
+
+JSON v1/v2/EXtended JSON : Son extensiones de JSON
+
+
+FIFO / LIFO : FIFO : First In First Out / LIFO : Last In First Out
+
+createCollection() : Crean una capped collection 
+
+https://www.mongodb.com/docs/manual/reference/method/db.createCollection/#mongodb-method-db.createCollection
+
+db.createCollection("productos",{
+  capped:true,
+  size:1000000,
+  max:10,
+  validator : {
+    $jsonSchema : {
+      "campo" : {
+        "bsontype" : "int"
+      }
+    }
+  }
+})
