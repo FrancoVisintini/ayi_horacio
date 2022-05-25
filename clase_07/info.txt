@@ -1,0 +1,11 @@
+YAML : YET Another Markup Language
+
+
+
+OPERADORES  :   $<algo>
+
+
+
+ECRIPTACION Y HASH
+
+HASH : Es un algoritmo de transformacion de valores de uno a uno, una vez transformado no se puede volver a tras
