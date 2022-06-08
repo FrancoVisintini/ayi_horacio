@@ -1,0 +1,93 @@
+//const http = require("http")
+//import http from "http"
+
+//Dynamic Import
+//import("./").then()
+
+{/* <Routes>
+    <Route element={<Home/>}/>
+    <Route element={<Home/>}/>
+    <Route element={<Home/>}/>
+    <Route element={<Home/>}/>
+    <Route element={<Home/>}/>
+</Routes> */}
+
+
+
+
+//app.use(rutasProductos)
+//Prefijo "/productos"
+app.use("/productos",rutasProductos)
+
+
+
+FORMAS DE REQUIRE
+
+//const getAllProductsController = require('../controllers/ProductosController').getAllProductsController;
+//const ProductosController = require('../controllers/ProductosController');
+//const getAllProductsController = ProductosController.getAllProductsController;
+//const { getAllProductsController } = ProductosController;
+const { getAllProductsController } = require('../controllers/ProductosController');
+
+
+
+
+//module.exports === {}
+
+//ANALOGOS
+
+
+export default getAllProductsController
+module.exports = getAllProductsController
+
+
+module.exports = {
+    getAllProductsController
+}
+export const getAllProductsController = ...
+
+
+
+
+
+
+app.use(bodyParser.json())//{nombre:"horacio"} application/json
+
+app.use(bodyParser.urlencoded({extended:true})
+//nombre=horacio  application/x-www-form-urlencoded
+
+
+
+
+const getAllProductsController = (req,res)=>{
+    
+    Productos.find()
+    .then(productos=>{
+        res.send(productos)
+    })
+    .catch(error=>{
+        res.send(error)
+    })
+
+}
+
+
+
+const nuevo_producto = new Productos(req.body)
+    nuevo_producto.save()
+    .then(()=>{
+        res.send("Producto creado")
+    })
+    .catch((err)=>{
+        res.status(500).send("Hubo un error en la consulta")
+    })
+
+
+
+        //Checkeos y validaciones previas de header y body
+    //Authorization : bearer 
+    //cookie
+
+
+//console.log(producto)
+    //const producto = await Productos.find({_id:id})
